@@ -85,7 +85,7 @@ df['emojis'] = moods_list
 
 app.layout = dbc.Container(
                           [
-                          html.H1(['Wrist Wearable's Data Monitor'],style={'text-align':'center'}),
+                          html.H1(["Wrist Wearable's Data Monitor"],style={'text-align':'center'}),
                           html.Hr(),
                           
                           dbc.Row(
