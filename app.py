@@ -6,8 +6,9 @@ import plotly.graph_objs as go
 import dash_bootstrap_components as dbc
 import pandas as pd
 import datetime
-from datetime import date,timezone
+from datetime import date, timezone
 import os
+import pytz
 
 
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.VAPOR],meta_tags=[
@@ -147,6 +148,8 @@ def update_output(date_value):
     df1_filtered['Date'] = pd.to_datetime(df1_filtered['Date'])
     df1_filtered.sort_values('Date',inplace=True)
     df1_filtered.reset_index(drop=True,inplace=True)
+
+    df1_filtered['Date'] = df1_filtered['Date'].tz_localize(pytz.utc).tz_convert(pytz.timezone('US/Eastern'))
 
 
 
