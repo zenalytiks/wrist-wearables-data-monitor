@@ -6,7 +6,7 @@ import plotly.graph_objs as go
 import dash_bootstrap_components as dbc
 import pandas as pd
 import datetime
-from datetime import date
+from datetime import date,timezone
 import os
 
 
@@ -168,7 +168,7 @@ def update_output(date_value):
 
         for i in range(len(df_filtered)):
 
-            fig.add_vline(x=datetime.datetime.strptime(str(df_filtered['full_date'][i]), "%Y-%m-%d %H:%M:%S").timestamp() * 1000, line_width=1, line_dash="dash", line_color="#32fbe2",annotation_text=df_filtered['emojis'][i],annotation_position='top',annotation_font_size=32)
+            fig.add_vline(x=datetime.datetime.strptime(str(df_filtered['full_date'][i]), "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc).timestamp() * 1000, line_width=1, line_dash="dash", line_color="#32fbe2",annotation_text=df_filtered['emojis'][i],annotation_position='top',annotation_font_size=32)
 
 
         card_content = []
