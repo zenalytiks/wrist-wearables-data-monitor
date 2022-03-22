@@ -29,6 +29,9 @@ df1.dropna(inplace=True)
 df1['Date'] = pd.to_datetime(df1['Time']).dt.date
 df1['Time'] = pd.to_datetime(df1['Time']).dt.time
 
+
+df['mood'] = df['mood'].str.strip()
+
 moods_list = []
 
 for i in range(len(df)):
@@ -80,8 +83,6 @@ for i in range(len(df)):
         moods_list.append(" ")
 
 df['emojis'] = moods_list
-
-
 
 app.layout = dbc.Container(
                           [
@@ -151,7 +152,6 @@ def update_output(date_value):
 
     string_prefix = 'You have selected: '
     if date_value is not None:
-        print(date_value)
         date_object = date.fromisoformat(date_value)
         date_string = date_object.strftime('%B %d, %Y')
 
