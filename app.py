@@ -160,8 +160,8 @@ def update_output(date_value):
 
         fig.update_layout(title_text='Heart Rate',title_font_size=24,font_color='#ffffff',paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)",margin=dict(l=0,r=0))
 
-        fig.update_xaxes(showline=True, linewidth=1, linecolor='rgba(255,255,255,0.5)',showgrid=False,zeroline=False)
-        fig.update_yaxes(showline=True, linewidth=1, linecolor='rgba(255,255,255,0.5)',showgrid=False,zeroline=False)
+        fig.update_xaxes(showline=True, linewidth=1, linecolor='rgba(255,255,255,0.5)', showgrid=False, zeroline=False, rangeslider_visible=True)
+        fig.update_yaxes(showline=True, linewidth=1, linecolor='rgba(255,255,255,0.5)', showgrid=False, zeroline=False)
 
 
         for i in range(len(df_filtered)):
