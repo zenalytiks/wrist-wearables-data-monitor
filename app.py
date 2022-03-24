@@ -32,57 +32,32 @@ df1['Time'] = pd.to_datetime(df1['Time']).dt.time
 
 df['mood'] = df['mood'].str.strip()
 
-moods_list = []
+moods_list = {
+    'happy': '😃',
+    'content': '🙂',
+    'neutral': '😐',
+    'sad': '☹️',
+    'angry': '😡',
+    'bored': '😒',
+    'tired': '😫',
+    'grateful': '😇',
+    'stressed': '😓',
+    'motivated': '🧐',
+    'relieved': '😌',
+    'focused': '🤔',
+    'irritated': '😩',
+    'relaxed': '😎',
+    'hopeful': '😏',
+    'anxious': '😰',
+    'frustrated': '😖',
+    'inspired': '🤩',
+    'guilt': '🤥',
+    'ashamed': '😬',
+    'depressed': '😥',
+    'indifferent': '😕'
+}
 
-for i in range(len(df)):
-    if df['mood'][i] == 'happy':
-        moods_list.append("😃")
-    elif df['mood'][i] == 'content':
-        moods_list.append("🙂")
-    elif df['mood'][i] == 'neutral':
-        moods_list.append("😐")
-    elif df['mood'][i] == 'sad':
-        moods_list.append("☹️")
-    elif df['mood'][i] == 'angry':
-        moods_list.append("😡")
-    elif df['mood'][i] == 'bored':
-        moods_list.append("😒")
-    elif df['mood'][i] == 'tired':
-        moods_list.append("😫")
-    elif df['mood'][i] == 'grateful':
-        moods_list.append("😇")
-    elif df['mood'][i] == 'stressed':
-        moods_list.append("😓")
-    elif df['mood'][i] == 'motivated':
-        moods_list.append("🧐")
-    elif df['mood'][i] == 'relieved':
-        moods_list.append("😌")
-    elif df['mood'][i] == 'focused':
-        moods_list.append("🤔")
-    elif df['mood'][i] == 'irritated':
-        moods_list.append("😩")
-    elif df['mood'][i] == 'relaxed':
-        moods_list.append("😎")
-    elif df['mood'][i] == 'hopeful':
-        moods_list.append("😏")
-    elif df['mood'][i] == 'anxious':
-        moods_list.append("😰")
-    elif df['mood'][i] == 'frustrated':
-        moods_list.append("😖")
-    elif df['mood'][i] == 'inspired':
-        moods_list.append("🤩")
-    elif df['mood'][i] == 'guilt':
-        moods_list.append("🤥")
-    elif df['mood'][i] == 'ashamed':
-        moods_list.append("😬")
-    elif df['mood'][i] == 'depressed':
-        moods_list.append("😥")
-    elif df['mood'][i] == 'indifferent':
-        moods_list.append("😕")
-    else:
-        moods_list.append(" ")
-
-df['emojis'] = moods_list
+df['emojis'] = df['mood'].map(moods_list)
 
 app.layout = dbc.Container(
                           [
